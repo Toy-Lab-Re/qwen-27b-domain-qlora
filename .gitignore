@@ -1,0 +1,8 @@
+# Documentation-only repository: exclude all other files, including
+# .env files, keys, archives, datasets, private reviews and temporary files.
+*
+!/.gitignore
+!/README.md
+!/docs/
+!/docs/ENGINEERING_JOURNEY.md
+!/docs/EVALUATION_METHOD.md
