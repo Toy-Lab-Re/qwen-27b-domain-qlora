@@ -10,6 +10,15 @@ Archived v0.5 gates record **5/5 knowledge checks, 6/6 fixed SQL tool tasks, and
 
 v0.5 為 **Adopted Candidate，僅內部試用，未經 Production 驗收或 Promotion 核准**。本次依原開發 Agent 的封存證據查核修正文案，未重跑模型或 SQL 評測。
 
+## Extended Evaluation — 2026-10-13
+
+The archived v0.5 follow-up examines the **complete assistant stack (system instructions, retrieval and possible tools), not LoRA alone**. It adds a **39-case acceptance suite (37 PASS / 2 PARTIAL)**, a **100-case near-distribution development suite (91 PASS / 4 PARTIAL / 5 FAIL)**, multi-turn checks, long-context retrieval probes and fixed-length concurrent-generation measurements on one DGX Spark / GB10.
+
+In a synthetic 512-token, reasoning-OFF concurrency test, **eight streams produced 110.8 aggregate tokens/s**, while the worst observed TTFT at 32 streams reached **83.32 seconds**. These are **aggregate, test-specific observations**, not single-user output speeds or validated production capacity. The graded suites used **one AI-assisted reviewer**; the final holdout was not scored and has known training overlap.
+
+- **[Extended evaluation research report](docs/EXTENDED_EVALUATION_20261013.md)** — methods, quality and latency trade-offs, and failure categories.
+- **[Interactive dashboard (offline HTML + aggregate JSON)](docs/public-dashboard/README.md)** — inspect the de-identified charts and source data. A live Pages link will be added after site deployment.
+
 ## 1. Key Engineering Highlights
 
 - **Quantized-backbone adaptation:** all five versions train PEFT LoRA on a frozen uniform-NVFP4 technical smoke backbone; deployment is a separate BF16 merge and requantization path.

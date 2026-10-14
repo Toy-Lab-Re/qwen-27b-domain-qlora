@@ -1,0 +1,169 @@
+{
+  "published_scope": "Aggregated technical observations only; not an independently verified benchmark or a production release.",
+  "tested_on": "2026-10-13",
+  "platform": {
+    "hardware": "one NVIDIA DGX Spark (GB10), 128 GB unified memory",
+    "inference": "Qwen 27B domain-adapted candidate with SGLang and DFlash2",
+    "state": "internal-trial candidate, not production"
+  },
+  "graded": {
+    "golden": {
+      "total": 39,
+      "pass": 37,
+      "partial": 2,
+      "fail": 0
+    },
+    "dev": {
+      "total": 100,
+      "pass": 91,
+      "partial": 4,
+      "fail": 5
+    },
+    "multiturn": {
+      "total": 10,
+      "pass": 8,
+      "partial": 2,
+      "fail": 0
+    }
+  },
+  "dev_tool_subsets": {
+    "no_tool_call": {
+      "total": 72,
+      "pass": 70,
+      "partial": 1,
+      "fail": 1
+    },
+    "with_tool_call": {
+      "total": 28,
+      "pass": 21,
+      "partial": 3,
+      "fail": 4
+    }
+  },
+  "fixed_gates": {
+    "knowledge": {
+      "pass": 5,
+      "total": 5
+    },
+    "sql_tool": {
+      "pass": 6,
+      "total": 6
+    },
+    "analysis_completed": {
+      "pass": 8,
+      "total": 8
+    },
+    "mean_analysis_s": 406.4
+  },
+  "general_no_system_prompt": {
+    "pass": 20,
+    "total": 24
+  },
+  "repeated_stream_decode_toks": [
+    39.93,
+    38.95
+  ],
+  "concurrency": [
+    {
+      "streams": 1,
+      "aggregate_toks": 24.2,
+      "avg_decode_toks": 24.37,
+      "slowest_decode_toks": 24.37,
+      "max_ttft_s": 0.16
+    },
+    {
+      "streams": 2,
+      "aggregate_toks": 46.2,
+      "avg_decode_toks": 24.29,
+      "slowest_decode_toks": 23.35,
+      "max_ttft_s": 0.27
+    },
+    {
+      "streams": 4,
+      "aggregate_toks": 73.8,
+      "avg_decode_toks": 20.2,
+      "slowest_decode_toks": 18.58,
+      "max_ttft_s": 0.26
+    },
+    {
+      "streams": 8,
+      "aggregate_toks": 110.8,
+      "avg_decode_toks": 17.31,
+      "slowest_decode_toks": 13.93,
+      "max_ttft_s": 0.3
+    },
+    {
+      "streams": 16,
+      "aggregate_toks": 125.2,
+      "avg_decode_toks": 13.06,
+      "slowest_decode_toks": 9.28,
+      "max_ttft_s": 32.93
+    },
+    {
+      "streams": 32,
+      "aggregate_toks": 145.7,
+      "avg_decode_toks": 12.57,
+      "slowest_decode_toks": 8.93,
+      "max_ttft_s": 83.32
+    }
+  ],
+  "context": [
+    {
+      "input_tokens": 1136,
+      "ttft_s": 0.47,
+      "decode_toks": 15.16,
+      "needle_found": true
+    },
+    {
+      "input_tokens": 3904,
+      "ttft_s": 1.57,
+      "decode_toks": 18.59,
+      "needle_found": true
+    },
+    {
+      "input_tokens": 16499,
+      "ttft_s": 7.23,
+      "decode_toks": 16.25,
+      "needle_found": true
+    },
+    {
+      "input_tokens": 30828,
+      "ttft_s": 15.07,
+      "decode_toks": 15.54,
+      "needle_found": true
+    },
+    {
+      "input_tokens": 60848,
+      "ttft_s": 36.94,
+      "decode_toks": 15.54,
+      "needle_found": true
+    },
+    {
+      "input_tokens": 114635,
+      "ttft_s": 93.69,
+      "decode_toks": 14.41,
+      "needle_found": true
+    },
+    {
+      "input_tokens": 170979,
+      "ttft_s": 178.61,
+      "decode_toks": 13.77,
+      "needle_found": true
+    }
+  ],
+  "holdout": {
+    "size": 134,
+    "known_verbatim_train_overlap": 5,
+    "evaluated": false
+  },
+  "disclosures": [
+    "Archived internal POC evidence; not independently reproduced in this public package.",
+    "The larger quality suites tested the assistant with application context (system instructions, retrieval, and possible tools), not an isolated LoRA-only model.",
+    "Golden and development answers were graded by one AI-assisted reviewer without independent second review.",
+    "Development questions are near-distribution; this is not a clean held-out accuracy evaluation.",
+    "The 134-question final holdout was not scored and contains 5 known verbatim training overlaps.",
+    "Aggregate throughput comes from artificial, fixed-length 512-token output, greedy decoding and reasoning disabled; it does not establish production concurrent-user capacity.",
+    "Long-context result is one needle retrieval at each length; it does not measure long-document reasoning quality.",
+    "Analysis completion counts do not establish semantic correctness or task success."
+  ]
+}
