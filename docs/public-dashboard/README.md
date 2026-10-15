@@ -4,11 +4,12 @@ This is a new, de-identified visualization built exclusively from a whitelist of
 
 ## Open the dashboard
 
+- **Live interactive dashboard:** [https://toy-qlora-dashboard.pages.dev/](https://toy-qlora-dashboard.pages.dev/) — Cloudflare Pages deployment of the de-identified, aggregate-only HTML.
 - **Interactive HTML:** [`index.html`](index.html). Open the downloaded HTML in a browser for the full dashboard. GitHub's source-code viewer does not execute the page.
 - **Inspectable data:** [`aggregate_metrics.json`](aggregate_metrics.json). The embedded chart values exactly match this aggregate-only JSON.
 - **Research report:** [Extended Evaluation, 2026-10-13](../EXTENDED_EVALUATION_20261013.md).
 
-The dashboard uses inline CSS, JavaScript and SVG. It requires no build system, external libraries, trackers, or API/network requests. A live Cloudflare Pages link can be added here after deployment.
+The dashboard uses inline CSS, JavaScript and SVG. It requires no build system, external libraries, trackers, or API/network requests. The same static files are deployed through Cloudflare Pages; the site does not use private backend services.
 
 ## Interpretation boundaries
 

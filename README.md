@@ -4,6 +4,8 @@
 
 A single-machine engineering case study for a domain-aware business analytics assistant: align a 27B Qwen model with documented semantics and SQL tool workflows, then evaluate the trade-off between concise answers and longer analysis.
 
+**[View the live QLoRA v0.5 Evaluation Dashboard](https://toy-qlora-dashboard.pages.dev/)** · [Extended Research Report](docs/EXTENDED_EVALUATION_20261013.md)
+
 Archived v0.5 gates record **5/5 knowledge checks, 6/6 fixed SQL tool tasks, and 8/8 completed analysis tasks**, with **42.30 streaming decode tokens/s under the earlier reasoning parser**. After the parser update, the recorded regression run retained 5/5 and 6/6 and measured 39.83 tok/s; analysis tasks were not rerun. The earlier analysis gate averaged **425.6 seconds per task**, versus 30.6 seconds for its v0.4 reference. These single-run, small-suite results establish neither general accuracy nor a speed advantage over v0.4.
 
 > 2026-10-12 · 本作品為經去識別化整理的個人 AI 工程案例，僅提供技術說明、抽象架構與模型測試彙總，不提供企業原始碼、資料、SQL 或內部部署設定。實驗結果依據封存紀錄，保留原有測試條件與已知限制；不代表正式 Production Release。
@@ -17,7 +19,7 @@ The archived v0.5 follow-up examines the **complete assistant stack (system inst
 In a synthetic 512-token, reasoning-OFF concurrency test, **eight streams produced 110.8 aggregate tokens/s**, while the worst observed TTFT at 32 streams reached **83.32 seconds**. These are **aggregate, test-specific observations**, not single-user output speeds or validated production capacity. The graded suites used **one AI-assisted reviewer**; the final holdout was not scored and has known training overlap.
 
 - **[Extended evaluation research report](docs/EXTENDED_EVALUATION_20261013.md)** — methods, quality and latency trade-offs, and failure categories.
-- **[Interactive dashboard (offline HTML + aggregate JSON)](docs/public-dashboard/README.md)** — inspect the de-identified charts and source data. A live Pages link will be added after site deployment.
+- **[Live interactive evaluation dashboard](https://toy-qlora-dashboard.pages.dev/)** — explore the de-identified quality, concurrency, and latency charts. [Source HTML & aggregate JSON](docs/public-dashboard/README.md).
 
 ## 1. Key Engineering Highlights
 
